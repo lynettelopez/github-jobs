@@ -10,8 +10,6 @@
   - [Built With](#built-with)
   - [Useful Resources](#useful-resources)
 
-#
-
 ## Overview
 
 ### **The Goal**
@@ -31,8 +29,6 @@ Users should be able to:
 ### **Links**
 
 - Live Site URL: TBD
-
-#
 
 ## My Process
 
