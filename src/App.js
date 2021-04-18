@@ -1,11 +1,12 @@
 import { Switch, Route, Redirect } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 import { useDarkMode } from "./hooks/useDarkMode";
-import { lightTheme, darkTheme } from "./styles/theme";
+import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/global";
-import AllPositions from "./components/AllPositions";
+import { lightTheme, darkTheme } from "./styles/theme";
+
+import MainPage from "./components/pages/MainPage";
+import PositionPage from "./components/pages/PositionPage";
 import Header from "./components/Header";
-import Position from "./components/Position";
 
 function App() {
   const [mode, toggleMode] = useDarkMode();
@@ -16,10 +17,10 @@ function App() {
       <Header mode={mode} toggleMode={toggleMode} />
       <Switch>
         <Route path="/positions/:id">
-          <Position />
+          <PositionPage />
         </Route>
         <Route path="/positions">
-          <AllPositions />
+          <MainPage />
         </Route>
         <Route path="/">
           <Redirect exact from="/" to="/positions" />

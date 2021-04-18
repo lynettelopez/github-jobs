@@ -9,7 +9,7 @@ import HeaderImageMobile from "../assets/mobile/bg-pattern-header.svg";
 import SunIcon from "../assets/desktop/icon-sun.svg";
 import MoonIcon from "../assets/desktop/icon-moon.svg";
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   height: ${convertPxToVw(136)}vw;
   background-image: url(${HeaderImageMobile});
   display: flex;
