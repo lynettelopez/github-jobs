@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles/theme";
 import Button from "../Button";
-import Positions from "../layouts/Positions";
+import PositionsGrid from "../layouts/PositionsGrid";
 import SearchBar from "../layouts/SearchBar";
 import SearchBarMobile from "../layouts/SearchBarMobile";
 import useWindowWidth from "../../hooks/useWindowWidth";
@@ -12,7 +12,7 @@ function MainPage() {
   return (
     <MainPageWrapper>
       {windowWidth < 768 ? <SearchBarMobile /> : <SearchBar />}
-      <Positions />
+      <PositionsGrid />
       <Button
         width={14.1}
         height={4.8}

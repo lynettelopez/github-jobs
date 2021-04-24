@@ -12,16 +12,16 @@ function SearchBar() {
 
   return (
     <SearchBarWrapper>
-      <NameField>
+      <DescriptionField>
         <Input
-          name="name"
+          name="description"
           type="text"
-          value={fields.name}
+          value={fields.description}
           onChange={handleChange}
           placeholder="Filter by title..."
         />
-        <Label htmlFor="name">Enter name</Label>
-      </NameField>
+        <Label htmlFor="description">Enter description</Label>
+      </DescriptionField>
       <LocationField>
         <Input
           name="location"
@@ -34,12 +34,12 @@ function SearchBar() {
       </LocationField>
       <FullTimeField>
         <Input
-          name="isFullTime"
+          name="full_time"
           type="checkbox"
-          checked={fields.isFullTime}
+          checked={fields.full_time === "on" ? true : false}
           onChange={handleChange}
         />
-        <Label htmlFor="isFullTime">Full Time Only</Label>
+        <Label htmlFor="full_time">Full Time Only</Label>
       </FullTimeField>
       <Button
         width={27.9}
@@ -64,7 +64,7 @@ const SearchBarWrapper = styled.section`
   background-color: ${(props) => props.theme.background.component};
 `;
 
-const NameField = styled.div`
+const DescriptionField = styled.div`
   margin-left: 2.4rem;
 `;
 

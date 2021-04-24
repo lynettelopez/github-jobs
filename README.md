@@ -36,6 +36,8 @@ Users should be able to:
 
 - [React](https://reactjs.org/)
 - [Styled Components](https://styled-components.com/)
+- [Styled React Modal](https://github.com/AlexanderRichey/styled-react-modal)
+- [Bounce.js](http://bouncejs.com/)
 
 ### **Useful Resources**
 
