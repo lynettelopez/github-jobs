@@ -35,7 +35,6 @@ Users should be able to:
 ### **Built With**
 
 - [React](https://reactjs.org/)
-- [Styled System](https://styled-system.com/)
 - [Styled Components](https://styled-components.com/)
 
 ### **Useful Resources**

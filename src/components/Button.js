@@ -1,30 +1,49 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { colors } from "../styles/theme";
 
-const Btn = styled.button`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-  background-color: ${colors.violet};
-  border-radius: 5px;
-  color: ${colors.white};
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 16px;
-`;
-
-function Button(props) {
+function Button({ width, height, bg, hover, text, onClick, children }) {
   return (
-    <Btn width={props.width} height={props.height}>
-      {props.children}
+    <Btn
+      width={width}
+      height={height}
+      bg={bg}
+      hover={hover}
+      text={text}
+      onClick={onClick}
+    >
+      {children}
     </Btn>
   );
 }
 
+const Btn = styled.button`
+  width: ${(props) => props.width}rem;
+  height: ${(props) => props.height}rem;
+  background-color: ${(props) => props.bg};
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: ${(props) => props.text};
+
+  :active {
+    background-color: ${(props) => props.hover};
+    transition: 0.1s;
+  }
+
+  /* Change the active to hover for the larger viewports */
+  /* :hover {
+    background-color: ${(props) => props.hover};
+    transition: 0.2s;
+  } */
+`;
+
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  bg: PropTypes.string.isRequired,
+  hover: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Button;

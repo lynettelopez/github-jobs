@@ -1,15 +1,16 @@
-const colors = {
+export const colors = {
   violet: "#5964E0",
   lightViolet: "#939BF4",
   darkBlue: "#19202D",
-  midgnight: "#121721",
+  midnight: "#121721",
   white: "#FFFFFF",
   lightGrey: "#F4F6F8",
   grey: "#9DAEC2",
   darkGrey: "#6E8098",
+  border: "rgba(110, 128, 152, 0.2)",
 };
 
-const lightTheme = {
+export const lightTheme = {
   background: {
     button: colors.violet,
     component: colors.white,
@@ -25,7 +26,7 @@ const lightTheme = {
   },
 };
 
-const darkTheme = {
+export const darkTheme = {
   background: {
     button: colors.white,
     component: colors.darkBlue,
@@ -40,5 +41,3 @@ const darkTheme = {
     headings: colors.white,
   },
 };
-
-export { colors, lightTheme, darkTheme };

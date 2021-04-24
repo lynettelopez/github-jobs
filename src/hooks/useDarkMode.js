@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useDarkMode = () => {
+const useDarkMode = () => {
   const [mode, setMode] = useState("light");
 
   const setEverywhere = (mode) => {
@@ -19,8 +19,7 @@ export const useDarkMode = () => {
   useEffect(() => {
     const localMode = window.localStorage.getItem("theme");
     if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches &&
+      window.matchMedia?.("(prefers-color-scheme: dark)").matches &&
       !localMode
     ) {
       setEverywhere("dark");
@@ -33,3 +32,5 @@ export const useDarkMode = () => {
 
   return [mode, toggleMode];
 };
+
+export default useDarkMode;

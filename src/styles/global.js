@@ -32,9 +32,9 @@ export const GlobalStyles = createGlobalStyle`
         list-style: none;   
     }
 
-    /* Set core root defaults */
+    /* Set core root defaults (i.e., 1rem = 10px) */
     html {
-        font-size: 1rem;
+        font-size: 62.5%;
     }
 
     /* Set core body defaults */
@@ -42,6 +42,7 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         text-rendering: optimizeSpeed;
         font-family: 'Kumbh Sans', sans-serif;
+        background-color: ${(props) => props.theme.background.page};
     }
 
     /* Make images easier to work with */
@@ -57,6 +58,14 @@ export const GlobalStyles = createGlobalStyle`
     textarea,
     select {
         font: inherit;
+    }
+
+    /* Remove highlight around form elements */
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: none;
     }
 
     /* Remove all animations and transitions for people that prefer not to see them */

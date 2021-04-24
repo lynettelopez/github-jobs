@@ -1,0 +1,90 @@
+// import { useContext } from "react";
+import styled from "styled-components";
+// import { ThemeContext } from "styled-components";
+import Button from "../Button";
+import useSearch from "../../hooks/useSearch";
+// import { ReactComponent as SearchIcon } from "../../images/desktop/icon-search.svg";
+import { colors } from "../../styles/theme";
+
+function SearchBar() {
+  //   const themeContext = useContext(ThemeContext);
+  const { fields, handleChange, handleSubmit } = useSearch();
+
+  return (
+    <SearchBarWrapper>
+      <NameField>
+        <Input
+          name="name"
+          type="text"
+          value={fields.name}
+          onChange={handleChange}
+          placeholder="Filter by title..."
+        />
+        <Label htmlFor="name">Enter name</Label>
+      </NameField>
+      <LocationField>
+        <Input
+          name="location"
+          type="text"
+          value={fields.location}
+          onChange={handleChange}
+          placeholder="Filter by location..."
+        />
+        <Label htmlFor="location">Enter location</Label>
+      </LocationField>
+      <FullTimeField>
+        <Input
+          name="isFullTime"
+          type="checkbox"
+          checked={fields.isFullTime}
+          onChange={handleChange}
+        />
+        <Label htmlFor="isFullTime">Full Time Only</Label>
+      </FullTimeField>
+      <Button
+        width={27.9}
+        height={4.8}
+        bg={colors.violet}
+        hover={colors.lightViolet}
+        text={colors.white}
+        onClick={handleSubmit}
+      >
+        Search
+      </Button>
+    </SearchBarWrapper>
+  );
+}
+
+const SearchBarWrapper = styled.section`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 8rem;
+  border-radius: 0.5rem;
+  background-color: ${(props) => props.theme.background.component};
+`;
+
+const NameField = styled.div`
+  margin-left: 2.4rem;
+`;
+
+const LocationField = styled.div``;
+
+const FullTimeField = styled.div``;
+
+const Input = styled.input`
+  background-color: ${(props) => props.theme.background.component};
+  color: ${(props) => props.theme.text.input};
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+
+  ::placeholder {
+    opacity: 50%;
+  }
+`;
+
+const Label = styled.label`
+  display: none;
+`;
+
+export default SearchBar;
