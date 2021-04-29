@@ -4,15 +4,29 @@ import Button from "../Button";
 import PositionsGrid from "../layouts/PositionsGrid";
 import SearchBar from "../layouts/SearchBar";
 import SearchBarMobile from "../layouts/SearchBarMobile";
+import useSearch from "../../hooks/useSearch";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
 function MainPage() {
+  const { fields, handleChange, handleSubmit, results } = useSearch();
   const windowWidth = useWindowWidth();
 
   return (
     <MainPageWrapper>
-      {windowWidth < 768 ? <SearchBarMobile /> : <SearchBar />}
-      <PositionsGrid />
+      {windowWidth < 768 ? (
+        <SearchBarMobile
+          fields={fields}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <SearchBar
+          fields={fields}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      <PositionsGrid results={results} />
       <Button
         width={14.1}
         height={4.8}

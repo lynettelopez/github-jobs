@@ -1,9 +1,14 @@
-import { useState } from "react";
-import useApi from "./useApi";
+import { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import axios from "axios";
+
+const url = "https://cors.bridged.cc/https://jobs.github.com/positions.json";
 
 function useSearch() {
-  const { queryApi } = useApi();
+  const history = useHistory();
+  const { search } = useLocation();
 
+  const [results, setResults] = useState([]);
   const [fields, setFields] = useState({
     description: "",
     location: "",
@@ -21,13 +26,23 @@ function useSearch() {
     );
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let query = new URLSearchParams(fields);
-    queryApi(query.toString());
+    history.push({
+      pathname: "/positions",
+      search: `?${query.toString()}`,
+    });
   };
 
-  return { fields, handleChange, handleSubmit };
+  useEffect(() => {
+    axios
+      .get(`${url}${search}`)
+      .then((res) => setResults(res.data))
+      .catch((err) => console.log(err));
+  }, [search]);
+
+  return { fields, handleChange, handleSubmit, results };
 }
 
 export default useSearch;

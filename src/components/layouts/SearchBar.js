@@ -2,13 +2,11 @@
 import styled from "styled-components";
 // import { ThemeContext } from "styled-components";
 import Button from "../Button";
-import useSearch from "../../hooks/useSearch";
 // import { ReactComponent as SearchIcon } from "../../images/desktop/icon-search.svg";
 import { colors } from "../../styles/theme";
 
-function SearchBar() {
+function SearchBar({ fields, handleChange, handleSubmit }) {
   //   const themeContext = useContext(ThemeContext);
-  const { fields, handleChange, handleSubmit } = useSearch();
 
   return (
     <SearchBarWrapper>

@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import useApi from "../../hooks/useApi";
+import Card from "../Card";
 
-function PositionsGrid() {
-  const { results } = useApi();
-
+function PositionsGrid({ results }) {
   return (
     <PositionsGridWrapper>
-      {/* {results.map((result) => (
-        <PositionCard key={result.id}>{result.title}</PositionCard>
-      ))} */}
-      {console.log(results)}
+      {results.map((result) => {
+        return (
+          <PositionCard key={result.id}>
+            <Card title={result.title} />
+          </PositionCard>
+        );
+      })}
     </PositionsGridWrapper>
   );
 }
@@ -23,7 +24,7 @@ const PositionsGridWrapper = styled.section`
   }
 `;
 
-const PositionCard = styled.article`
+const PositionCard = styled.div`
   width: 32.7rem;
   height: 25.3rem;
 `;

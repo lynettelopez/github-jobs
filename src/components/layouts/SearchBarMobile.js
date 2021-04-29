@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import Modal from "styled-react-modal";
 import Button from "../Button";
-import useSearch from "../../hooks/useSearch";
 import { ReactComponent as FilterIcon } from "../../images/mobile/icon-filter.svg";
 import { ReactComponent as SearchIcon } from "../../images/desktop/icon-search.svg";
 import { ReactComponent as LocationIcon } from "../../images/desktop/icon-location.svg";
@@ -10,10 +9,9 @@ import CheckIcon from "../../images/desktop/icon-check.svg";
 import { colors } from "../../styles/theme";
 import bounce from "../../styles/animations/bounce";
 
-function SearchBarMobile() {
+function SearchBarMobile({ fields, handleChange, handleSubmit }) {
   const themeContext = useContext(ThemeContext);
   const [isModalShowing, setIsModalShowing] = useState(false);
-  const { fields, handleChange, handleSubmit } = useSearch();
 
   return (
     <SearchBarMobileWrapper>
