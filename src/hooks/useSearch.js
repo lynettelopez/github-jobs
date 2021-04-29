@@ -7,42 +7,63 @@ const url = "https://cors.bridged.cc/https://jobs.github.com/positions.json";
 function useSearch() {
   const history = useHistory();
   const { search } = useLocation();
-
-  const [results, setResults] = useState([]);
   const [fields, setFields] = useState({
     description: "",
     location: "",
     full_time: "off",
   });
+  const [results, setResults] = useState([]);
+  const [page, setPage] = useState(1);
+  const [canLoadMoreResults, setCanLoadMoreResults] = useState(true);
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setFields((fields) =>
-      event.target.name === "full_time"
+      e.target.name === "full_time"
         ? {
             ...fields,
-            [event.target.name]: event.target.checked ? "on" : "off",
+            [e.target.name]: e.target.checked ? "on" : "off",
           }
-        : { ...fields, [event.target.name]: event.target.value }
+        : { ...fields, [e.target.name]: e.target.value }
     );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let query = new URLSearchParams(fields);
+    let query = new URLSearchParams(fields).toString();
     history.push({
       pathname: "/positions",
-      search: `?${query.toString()}`,
+      search: `?${query}`,
+    });
+  };
+
+  const loadMoreResults = () => {
+    let query = new URLSearchParams(fields).toString();
+    history.push({
+      pathname: "/positions",
+      search: `?${query}&page=${page + 1}`,
     });
   };
 
   useEffect(() => {
     axios
       .get(`${url}${search}`)
-      .then((res) => setResults(res.data))
+      .then((res) => {
+        setResults(res.data);
+        let pageNum = parseInt(new URLSearchParams(search).get("page"));
+        setPage(pageNum ? pageNum : 1);
+        setCanLoadMoreResults(res.data.length < 50 ? false : true);
+      })
       .catch((err) => console.log(err));
   }, [search]);
 
-  return { fields, handleChange, handleSubmit, results };
+  return {
+    fields,
+    handleChange,
+    handleSubmit,
+    results,
+    loadMoreResults,
+    canLoadMoreResults,
+  };
 }
 
 export default useSearch;

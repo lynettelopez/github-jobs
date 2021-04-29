@@ -8,7 +8,14 @@ import useSearch from "../../hooks/useSearch";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
 function MainPage() {
-  const { fields, handleChange, handleSubmit, results } = useSearch();
+  const {
+    fields,
+    handleChange,
+    handleSubmit,
+    results,
+    loadMoreResults,
+    canLoadMoreResults,
+  } = useSearch();
   const windowWidth = useWindowWidth();
 
   return (
@@ -27,15 +34,18 @@ function MainPage() {
         />
       )}
       <PositionsGrid results={results} />
-      <Button
-        width={14.1}
-        height={4.8}
-        bg={colors.violet}
-        hover={colors.lightViolet}
-        text={colors.white}
-      >
-        Load More
-      </Button>
+      {canLoadMoreResults && (
+        <Button
+          width={14.1}
+          height={4.8}
+          bg={colors.violet}
+          hover={colors.lightViolet}
+          text={colors.white}
+          onClick={loadMoreResults}
+        >
+          Load More
+        </Button>
+      )}
     </MainPageWrapper>
   );
 }
