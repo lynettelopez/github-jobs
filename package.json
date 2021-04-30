@@ -36,5 +36,8 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "devDependencies": {
+    "date-fns": "^2.21.1"
   }
 }

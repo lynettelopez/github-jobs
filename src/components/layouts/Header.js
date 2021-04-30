@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { ReactComponent as SunIcon } from "../../images/desktop/icon-sun.svg";
 import { ReactComponent as MoonIcon } from "../../images/desktop/icon-moon.svg";
-// import HeaderImageDesktop from "../../assets/desktop/bg-pattern-header.svg";
+import HeaderImageDesktop from "../../images/desktop/bg-pattern-header.svg";
 import HeaderImageMobile from "../../images/mobile/bg-pattern-header.svg";
-// import HeaderImageTablet from "../../assets/tablet/bg-pattern-header.svg";
+import HeaderImageTablet from "../../images/tablet/bg-pattern-header.svg";
+import { devices } from "../../styles/devices";
 import { colors } from "../../styles/theme";
 
 function Header({ mode, toggleMode }) {
@@ -24,15 +24,21 @@ function Header({ mode, toggleMode }) {
   );
 }
 
-Header.propTypes = {
-  mode: PropTypes.string.isRequired,
-  toggleMode: PropTypes.func.isRequired,
-};
-
 const HeaderWrapper = styled.header`
   height: 13.6rem;
   background-image: url(${HeaderImageMobile});
+  background-size: cover;
   display: flex;
+
+  @media ${devices.tablet} {
+    height: 16rem;
+    background-image: url(${HeaderImageTablet});
+  }
+
+  @media ${devices.desktop} {
+    height: 16.2rem;
+    background-image: url(${HeaderImageDesktop});
+  }
 `;
 
 const Title = styled.h1`
@@ -43,16 +49,32 @@ const Title = styled.h1`
     color: ${colors.white};
     text-decoration: none;
   }
+
+  @media ${devices.tablet} {
+    padding: 4.2rem 0 0 4rem;
+  }
+
+  @media ${devices.desktop} {
+    padding: 4.5rem 0 0 16.5rem;
+  }
 `;
 
 const Toggle = styled.div`
-  position: relative;
   width: 11.2rem;
   height: 2.4rem;
   padding: 3.6rem 0 0 5.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+
+  @media ${devices.tablet} {
+    padding: 4.6rem 4rem 0 41.7rem;
+  }
+
+  @media ${devices.desktop} {
+    padding: 4.6rem 16.5rem 0 83.9rem;
+  }
 `;
 
 const Label = styled.label`
@@ -63,7 +85,7 @@ const Label = styled.label`
   background-color: ${colors.white};
   border-radius: 1.2rem;
 
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     top: 0.5rem;
@@ -73,6 +95,14 @@ const Label = styled.label`
     border-radius: 50%;
     background-color: ${colors.violet};
     transition: 0.3s;
+  }
+
+  @media ${devices.tablet} {
+    left: 45.4rem;
+  }
+
+  @media ${devices.desktop} {
+    left: 87.5rem;
   }
 `;
 
@@ -84,13 +114,14 @@ const Input = styled.input`
   border-radius: 1.2rem;
   cursor: pointer;
 
-  /* 
-  :hover + ${Label}::after {
-    background-color: ${colors.lightViolet};
-  } */
-
-  :checked + ${Label}::after {
+  &:checked + ${Label}::after {
     left: ${(props) => (props.mode === "light" ? ".5rem" : "2.9rem")};
+  }
+
+  @media ${devices.desktop} {
+    &:hover + ${Label}::after {
+      background-color: ${colors.lightViolet};
+    }
   }
 `;
 

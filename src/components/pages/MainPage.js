@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { colors } from "../../styles/theme";
 import Button from "../Button";
-import PositionsGrid from "../layouts/PositionsGrid";
+import CardGrid from "../layouts/CardGrid";
 import SearchBar from "../layouts/SearchBar";
 import SearchBarMobile from "../layouts/SearchBarMobile";
 import useSearch from "../../hooks/useSearch";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import { devices } from "../../styles/devices";
+import { colors } from "../../styles/theme";
 
 function MainPage() {
   const {
@@ -33,7 +34,7 @@ function MainPage() {
           handleSubmit={handleSubmit}
         />
       )}
-      <PositionsGrid results={results} />
+      <CardGrid results={results} />
       {canLoadMoreResults && (
         <Button
           width={14.1}
@@ -60,8 +61,34 @@ const MainPageWrapper = styled.main`
   flex-direction: column;
   align-items: center;
 
+  @media ${devices.tablet} {
+    width: 68.9rem;
+    top: 12rem;
+  }
+
+  @media ${devices.desktop} {
+    width: 111rem;
+    top: 12rem;
+  }
+
   > * {
     margin-bottom: 3.2rem;
+
+    @media ${devices.tablet} {
+      margin-bottom: 4.5rem;
+
+      &:last-child {
+        margin-top: 1.1rem;
+      }
+    }
+
+    @media ${devices.desktop} {
+      margin-bottom: 8rem;
+
+      &:last-child {
+        margin-top: -2.4rem;
+      }
+    }
   }
 `;
 

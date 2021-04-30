@@ -106,7 +106,7 @@ const SearchButton = styled.button`
   border-radius: 0.5rem;
   background-color: ${colors.violet};
 
-  :active {
+  &:active {
     background-color: ${colors.lightViolet};
     transition: 0.1s;
   }
@@ -116,9 +116,8 @@ const Input = styled.input`
   background-color: ${(props) => props.theme.background.component};
   color: ${(props) => props.theme.text.input};
   font-size: 1.6rem;
-  line-height: 1.6rem;
 
-  ::placeholder {
+  &::placeholder {
     opacity: 50%;
   }
 `;
@@ -150,7 +149,6 @@ const LocationField = styled.div`
     width: 24.6rem;
     margin-left: 1.6rem;
     font-size: 1.6rem;
-    line-height: 1.6rem;
   }
 `;
 
@@ -176,7 +174,7 @@ const FullTimeField = styled.div`
     opacity: 10.35%;
     border-radius: 0.3rem;
 
-    :checked {
+    &:checked {
       background-color: ${colors.violet};
       background-image: url(${CheckIcon});
       background-repeat: no-repeat;
@@ -190,7 +188,6 @@ const FullTimeField = styled.div`
     color: ${(props) => props.theme.text.checkBox};
     font-size: 1.6rem;
     font-weight: 700;
-    line-height: 1.6rem;
   }
 `;
 

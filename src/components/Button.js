@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { devices } from "../styles/devices";
 
 function Button({ width, height, bg, hover, text, onClick, children }) {
   return (
@@ -23,19 +24,20 @@ const Btn = styled.button`
   border-radius: 0.5rem;
   font-weight: 700;
   font-size: 1.6rem;
-  line-height: 1.6rem;
   color: ${(props) => props.text};
+  cursor: pointer;
 
-  :active {
+  &:active {
     background-color: ${(props) => props.hover};
     transition: 0.1s;
   }
 
-  /* Change the active to hover for the larger viewports */
-  /* :hover {
-    background-color: ${(props) => props.hover};
-    transition: 0.2s;
-  } */
+  @media ${devices.desktop} {
+    &:hover {
+      background-color: ${(props) => props.hover};
+      transition: 0.2s;
+    }
+  }
 `;
 
 Button.propTypes = {

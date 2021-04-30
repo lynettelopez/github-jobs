@@ -5,8 +5,6 @@ import axios from "axios";
 const url = "https://cors.bridged.cc/https://jobs.github.com/positions.json";
 
 function useSearch() {
-  const history = useHistory();
-  const { search } = useLocation();
   const [fields, setFields] = useState({
     description: "",
     location: "",
@@ -15,6 +13,8 @@ function useSearch() {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [canLoadMoreResults, setCanLoadMoreResults] = useState(true);
+  const history = useHistory();
+  const { search } = useLocation();
 
   const handleChange = (e) => {
     setFields((fields) =>
@@ -54,6 +54,10 @@ function useSearch() {
         setCanLoadMoreResults(res.data.length < 50 ? false : true);
       })
       .catch((err) => console.log(err));
+
+    let timer = setTimeout(() => window.scrollTo(0, 0), 1000);
+
+    return () => clearTimeout(timer);
   }, [search]);
 
   return {
