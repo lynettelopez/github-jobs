@@ -21,7 +21,7 @@ function SearchBar({ fields, handleChange, handleSubmit }) {
             value={fields.description}
             onChange={handleChange}
             placeholder={
-              windowWidth < 1440
+              windowWidth < 1400
                 ? "Filter by title..."
                 : "Filter by title, companies, expertise..."
             }
@@ -51,11 +51,11 @@ function SearchBar({ fields, handleChange, handleSubmit }) {
             onChange={handleChange}
           />
           <Label htmlFor="full_time">
-            {windowWidth < 1440 ? "Full Time" : "Full Time Only"}
+            {windowWidth < 1400 ? "Full Time" : "Full Time Only"}
           </Label>
         </FullTimeField>
         <Button
-          width={windowWidth < 1440 ? 8 : 12.3}
+          width={windowWidth < 1400 ? 8 : 12.3}
           height={4.8}
           bg={colors.violet}
           hover={colors.lightViolet}

@@ -39,6 +39,7 @@ export const GlobalStyles = createGlobalStyle`
 
     /* Set core body defaults */
     body {
+        max-width: 100vw;
         min-height: 100vh;
         text-rendering: optimizeSpeed;
         font-family: 'Kumbh Sans', sans-serif;

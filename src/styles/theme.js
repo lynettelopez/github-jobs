@@ -12,7 +12,10 @@ export const colors = {
 
 export const lightTheme = {
   background: {
-    button: colors.violet,
+    button: {
+      normal: "rgba(89, 100, 224, 0.1)",
+      hover: "rgba(89, 100, 224, 0.35)",
+    },
     component: colors.white,
     checkBox: colors.darkBlue,
     filter: colors.darkGrey,
@@ -28,7 +31,10 @@ export const lightTheme = {
 
 export const darkTheme = {
   background: {
-    button: colors.white,
+    button: {
+      normal: "rgba(255, 255, 255, 0.1)",
+      hover: "rgba(255, 255, 255, 0.35)",
+    },
     component: colors.darkBlue,
     checkBox: colors.white,
     filter: colors.white,

@@ -46,7 +46,7 @@ function useSearch() {
 
   useEffect(() => {
     axios
-      .get(`${url}${search}`)
+      .get(url + search)
       .then((res) => {
         setResults(res.data);
         let pageNum = parseInt(new URLSearchParams(search).get("page"));

@@ -7,9 +7,14 @@ function Card({ company, company_logo, created_at, location, title, type }) {
 
   return (
     <>
-      <Logo>
-        <img src={company_logo} alt={company + "'s logo"} />
-      </Logo>
+      <Logo
+        src={
+          company_logo
+            ? company_logo
+            : "https://maceilautobody.com/wp-content/uploads/2018/06/logo-placeholder.png"
+        }
+        alt={company + "'s logo"}
+      />
       <Body>
         <PositionInformation>
           <Details>
@@ -26,25 +31,18 @@ function Card({ company, company_logo, created_at, location, title, type }) {
   );
 }
 
-const Logo = styled.div`
+const Logo = styled.img`
   position: relative;
   z-index: 1;
   width: 5rem;
   height: 5rem;
   margin-left: 3.2rem;
   border-radius: 1.5rem;
+  overflow: hidden;
   background-color: ${(props) => props.theme.background.component};
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 1.5rem;
-  }
 `;
 
 const Body = styled.div`
-  position: relative;
-  z-index: 0;
   margin-top: -2.5rem;
   background-color: ${(props) => props.theme.background.component};
   border-radius: 0.5rem;
@@ -62,16 +60,16 @@ const PositionInformation = styled.div`
 
 const Details = styled.div`
   display: flex;
-  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
 
   > * {
-    padding-right: 1.2rem;
+    margin-right: 1.2rem;
     color: ${colors.darkGrey};
   }
 `;
 
 const Title = styled.h1`
-  padding-bottom: 1.7rem;
+  margin-bottom: 1.7rem;
   font-size: 2rem;
   color: ${(props) => props.theme.text.headings};
 
@@ -82,7 +80,7 @@ const Title = styled.h1`
 `;
 
 const Company = styled.h3`
-  padding-bottom: 4.4rem;
+  margin-bottom: 4.4rem;
 `;
 
 const Location = styled.h2`

@@ -53,22 +53,17 @@ function MainPage() {
 
 const MainPageWrapper = styled.main`
   width: 32.7rem;
-  position: absolute;
-  top: 9.6rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: -4rem auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media ${devices.tablet} {
     width: 68.9rem;
-    top: 12rem;
   }
 
   @media ${devices.desktop} {
     width: 111rem;
-    top: 12rem;
   }
 
   > * {
