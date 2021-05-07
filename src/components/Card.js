@@ -50,12 +50,6 @@ const Body = styled.div`
 
 const PositionInformation = styled.div`
   padding: 4.9rem 3.2rem 3.2rem;
-
-  h3 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: ${colors.darkGrey};
-  }
 `;
 
 const Details = styled.div`
@@ -70,8 +64,6 @@ const Details = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 1.7rem;
-  font-size: 2rem;
-  color: ${(props) => props.theme.text.headings};
 
   &:hover {
     color: ${colors.darkGrey};
@@ -84,10 +76,7 @@ const Company = styled.h3`
 `;
 
 const Location = styled.h2`
-  font-size: 1.4rem;
   line-height: 1.8rem;
-  font-weight: 700;
-  color: ${colors.violet};
 `;
 
 export default Card;

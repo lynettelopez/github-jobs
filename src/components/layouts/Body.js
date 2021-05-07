@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import dateConverter from "../../helpers/dateConverter";
-// import useWindowWidth from "../../hooks/useWindowWidth";
 import FooterImageMobile from "../../images/mobile/bg-pattern-detail-footer.svg";
+import FooterImageDesktop from "../../images/desktop/bg-pattern-detail-footer.svg";
+import { devices } from "../../styles/devices";
 import { colors } from "../../styles/theme";
 
 function Body({ createdAt, type, title, location, url, description, apply }) {
-  // const windowWidth = useWindowWidth();
   const timestamp = dateConverter(createdAt);
 
   return (
@@ -38,6 +38,16 @@ function Body({ createdAt, type, title, location, url, description, apply }) {
 const BodyWrapper = styled.section`
   width: 32.7rem;
   margin: 0 auto 4rem;
+
+  @media ${devices.tablet} {
+    width: 68.9rem;
+    margin-bottom: 4.8rem;
+  }
+
+  @media ${devices.desktop} {
+    width: 73rem;
+    margin-bottom: 7.2rem;
+  }
 `;
 
 const DescriptionSection = styled.div`
@@ -45,25 +55,45 @@ const DescriptionSection = styled.div`
   margin-bottom: 3.2rem;
   padding: 4rem 0 3.2rem;
   border-radius: 0.5rem;
+
+  @media ${devices.tablet} {
+    padding: 4.8rem;
+  }
 `;
 
 const Header = styled.div`
   width: 27.9rem;
   margin: 0 auto 3.2rem;
+
+  @media ${devices.tablet} {
+    width: 59.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 4rem;
+  }
+
+  @media ${devices.desktop} {
+    width: 63.9rem;
+  }
 `;
 
 const PositionInformation = styled.div`
   margin-bottom: 3.2rem;
+
+  @media ${devices.tablet} {
+    width: 42rem;
+    margin: 0;
+  }
+
+  @media ${devices.desktop} {
+    width: 46.8rem;
+  }
 `;
 
 const Details = styled.div`
   display: flex;
   margin-bottom: 1.1rem;
-
-  h3 {
-    font-size: 1.6rem;
-    font-weight: 400;
-  }
 
   > * {
     margin-right: 1.2rem;
@@ -71,18 +101,22 @@ const Details = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.h1`
   margin-bottom: 1.2rem;
-  color: ${(props) => props.theme.text.headings};
-  font-size: 2rem;
-  font-weight: 700;
+
+  @media ${devices.tablet} {
+    margin-bottom: 1.4rem;
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+  }
 `;
 
-const Location = styled.div`
-  color: ${colors.violet};
-  font-size: 1.4rem;
+const Location = styled.h2`
   line-height: 1.8rem;
-  font-weight: 700;
+
+  @media ${devices.tablet} {
+    line-height: 1.4rem;
+  }
 `;
 
 const Button = styled.button`
@@ -96,6 +130,17 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${devices.tablet} {
+    width: 14.1rem;
+  }
+
+  @media ${devices.desktop} {
+    &:hover {
+      background-color: ${colors.lightViolet};
+      transition: 0.2s;
+    }
+  }
 `;
 
 const Description = styled.div`
@@ -105,7 +150,17 @@ const Description = styled.div`
   font-size: 1.6rem;
   line-height: 2.6rem;
 
+  @media ${devices.tablet} {
+    width: 59.3rem;
+  }
+
+  @media ${devices.desktop} {
+    width: 63.9rem;
+  }
+
   p {
+    line-height: 2.6rem;
+
     :not(:last-child) {
       margin-bottom: 3rem;
     }
@@ -114,23 +169,28 @@ const Description = styled.div`
   a {
     color: ${colors.violet};
     font-weight: 700;
+
+    &:hover {
+      color: ${colors.lightViolet};
+      transition: 0.2s;
+    }
   }
 
   h1 {
     margin-bottom: 2.8rem;
-    color: ${(props) => props.theme.text.headings};
-    font-size: 2rem;
-    font-weight: 700;
   }
 
   ul,
   ol {
     margin-left: 1.8rem;
-    margin-bottom: 3.2rem;
+
+    &:not(:last-child) {
+      margin-bottom: 3.2rem;
+    }
 
     li {
-      padding-left: 3.2rem;
       margin-bottom: 0.8rem;
+      padding-left: 3.2rem;
 
       &::marker {
         color: ${colors.violet};
@@ -156,35 +216,50 @@ const ApplySection = styled.div`
   width: calc(100% - 6.4rem);
   height: calc(100% - 6.4rem);
   padding: 3.2rem;
-  margin-bottom: 4rem;
   background-image: url(${FooterImageMobile});
   background-size: cover;
   border-radius: 0.5rem;
-  color: ${colors.white};
   word-break: break-all;
   word-break: break-word;
 
+  @media ${devices.tablet} {
+    width: calc(100% - 9.6rem);
+    height: calc(100% - 8.2rem);
+    padding: 4.1rem 4.8rem;
+    background-image: url(${FooterImageDesktop});
+  }
+
   h1 {
     margin-bottom: 2.8rem;
-    font-size: 2rem;
-    font-weight: 700;
+    color: ${colors.white};
   }
 `;
 
 const Apply = styled.div`
   width: 26.3rem;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
+
+  @media ${devices.tablet} {
+    width: 59.3rem;
+  }
 
   p {
+    color: ${colors.white};
+    line-height: 2.6rem;
+
     :not(:last-child) {
-      margin-bottom: 2.8rem;
+      margin-bottom: 3.2rem;
     }
   }
 
   a {
     color: ${colors.white};
     font-weight: 700;
+
+    &:hover {
+      color: ${colors.white};
+      opacity: 0.8;
+      transition: 0.2s;
+    }
   }
 `;
 

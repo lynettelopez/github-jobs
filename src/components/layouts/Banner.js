@@ -1,6 +1,6 @@
 import extractDomain from "extract-domain";
 import styled from "styled-components";
-import { colors } from "../../styles/theme";
+import { devices } from "../../styles/devices";
 
 function Banner({ company, logo, url }) {
   return (
@@ -32,6 +32,16 @@ const BannerWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${devices.tablet} {
+    width: 68.9rem;
+    margin-bottom: 3.2rem;
+    flex-direction: row;
+  }
+
+  @media ${devices.desktop} {
+    width: 73rem;
+  }
 `;
 
 const Logo = styled.img`
@@ -39,8 +49,13 @@ const Logo = styled.img`
   width: 5rem;
   height: 5rem;
   border-radius: 1.5rem;
-  overflow: hidden;
   background-color: ${(props) => props.theme.background.component};
+
+  @media ${devices.tablet} {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 0 0 0 0.6rem;
+  }
 `;
 
 const Body = styled.div`
@@ -51,22 +66,36 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${devices.tablet} {
+    height: 14rem;
+    margin-top: 0;
+    margin-left: -14rem;
+    border-radius: 0 0.6rem 0.6rem 0.6rem;
+    flex-direction: row;
+    position: relative;
+  }
 `;
 
 const Details = styled.div`
+  width: 28.2rem;
   margin-top: 4.9rem;
+  padding: 0 3.2rem;
   text-align: center;
+
+  @media ${devices.tablet} {
+    margin: 0 0 0 18rem;
+    padding: 0;
+    text-align: left;
+  }
 
   h1 {
     margin-bottom: 1.3rem;
-    color: ${(props) => props.theme.text.headings};
-    font-size: 2rem;
-    font-weight: 700;
-  }
 
-  p {
-    color: ${colors.darkGrey};
-    font-size: 1.6rem;
+    @media ${devices.tablet} {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
   }
 `;
 
@@ -83,6 +112,21 @@ const Button = styled.button`
   color: ${(props) => props.theme.text.button};
   font-size: 1.6rem;
   font-weight: 700;
+
+  @media ${devices.tablet} {
+    position: absolute;
+    right: 4rem;
+    margin: 0;
+  }
+
+  @media ${devices.desktop} {
+    right: 4.3rem;
+
+    &:hover {
+      background-color: ${(props) => props.theme.background.button.hover};
+      transition: 0.2s;
+    }
+  }
 `;
 
 export default Banner;

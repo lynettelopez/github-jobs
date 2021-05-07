@@ -12,11 +12,17 @@ function PositionPage() {
   const [position, setPosition] = useState({});
 
   useEffect(() => {
+    let isMounted = true;
+
     axios
       .get(url + pathname + ".json")
-      .then((res) => setPosition(res.data))
+      .then((res) => {
+        if (isMounted) setPosition(res.data);
+      })
       .catch((err) => console.log(err));
-  });
+
+    return () => (isMounted = false);
+  }, [pathname]);
 
   return (
     <>

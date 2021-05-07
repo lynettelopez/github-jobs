@@ -44,6 +44,7 @@ const HeaderWrapper = styled.header`
 const Title = styled.h1`
   padding: 3.2rem 0 0 2.4rem;
   font-size: 3rem;
+  line-height: 3rem;
 
   a {
     color: ${colors.white};

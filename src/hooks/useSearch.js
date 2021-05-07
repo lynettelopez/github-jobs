@@ -57,7 +57,10 @@ function useSearch() {
 
     let timer = setTimeout(() => window.scrollTo(0, 0), 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.scroll(0, 0);
+    };
   }, [search]);
 
   return {

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
     /* Box sizing rules */
@@ -39,8 +40,9 @@ export const GlobalStyles = createGlobalStyle`
 
     /* Set core body defaults */
     body {
-        max-width: 100vw;
+        width: 100vw;
         min-height: 100vh;
+        overflow-x: hidden;
         text-rendering: optimizeSpeed;
         font-family: 'Kumbh Sans', sans-serif;
         background-color: ${(props) => props.theme.background.page};
@@ -79,5 +81,33 @@ export const GlobalStyles = createGlobalStyle`
             transition-duration: 0.01ms !important;
             scroll-behavior: auto !important;
         }
+    }
+
+    h1 {
+        color: ${(props) => props.theme.text.headings};
+        font-size: 2rem;
+        line-height: 2rem;
+        font-weight: 700;
+    }
+
+    h2 {
+        color: ${colors.violet};
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        color: ${colors.darkGrey};
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        font-weight: 400;
+    }
+
+    p {
+        color: ${colors.darkGrey};
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        font-weight: 400;
     }
 `;

@@ -34,7 +34,11 @@ function MainPage() {
           handleSubmit={handleSubmit}
         />
       )}
-      <CardGrid results={results} />
+      {results.length === 0 ? (
+        <p>Nothing found.</p>
+      ) : (
+        <CardGrid results={results} />
+      )}
       {canLoadMoreResults && (
         <Button
           width={14.1}
