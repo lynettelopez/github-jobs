@@ -12,7 +12,7 @@
 
 ## Overview
 
-### **The Goal**
+### **The Challenge**
 
 I set out to create a redesign of [GitHub Jobs](https://jobs.github.com/), a job board created by GitHub. I built the React application that's layered on top the API, the GitHub Jobs API belongs to GitHub, and the front-end design was created by Frontend Mentors.
 
